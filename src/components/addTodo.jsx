@@ -19,7 +19,7 @@ const addTodo = () => {
                     {/* ------ */}
                     <input className='w-[92%] h-full outline-none bg-transparent' type="text" placeholder='Add a task...' />
                 </div>
-                <button className="addbtn px-5 bg-[#e55c8a] h-full flex justify-center items-center rounded-md">save</button>
+                <button className="addbtn px-5 bg-[#e55c8a] h-full flex justify-center items-center rounded-md hover:bg-[#e7457b] transition-all ease-linear">save</button>
             </div>
 
         </div>
