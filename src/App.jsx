@@ -16,6 +16,8 @@ const App = () => {
         <div className="todos borde-2 h-[65%] w-[85%] m-auto">
           <div className="todosTitle text-xl font-bold mb-3">Your Todos</div>
           <Todo/>
+          <Todo/>
+          <Todo/>
         </div>
 
       </div>
