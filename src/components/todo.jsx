@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import Dropdown from './dropdown'
 
-const todo = () => {
+const todo = ({task}) => {
   const [ischeck, setIscheck] = useState(false)
   const [checkedStyle, setCheckedStyle] = useState({ display: 'block', bgcolor: '#e55c8a', "text-decoration-line": "line-through", color: "#879098" })
   const [notcheckedStyle, setNotcheckedStyle] = useState({ display: 'none', bgcolor: '#484f59', "text-decoration-line": "none", color: "white" })
@@ -31,7 +31,7 @@ const todo = () => {
           <span style={{ display: ischeck ? checkedStyle.display : notcheckedStyle.display }} className="check absolute left-1/2 top-px -translate-x-1/2 w-1/3 h-2/3 border-b-2 border-r-2 rotate-45 z-20"></span>
         </div>
 
-        <div style={taskStyle} className="task text-sm">Lorem ipsum dolor sit, amet consectetur adipisicing.</div>
+        <div style={taskStyle} className="task text-sm">{task.task}</div>
       </div>
 
       <div className="right relative">

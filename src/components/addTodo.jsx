@@ -1,6 +1,13 @@
 import React from 'react'
 
-const addTodo = () => {
+const addTodo = ({handleChange,handleSave,todo}) => {
+    
+    const handleKeyDown = (event) => {
+        if (event.key === "Enter") {
+            handleSave()
+        }
+    }
+
     return (
         <div className="addTodo h-[20%] w-[85%] m-auto flex flex-col items-center">
 
@@ -17,9 +24,9 @@ const addTodo = () => {
                         <path d="M3 21H11" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
                     </svg>
                     {/* ------ */}
-                    <input className='w-[92%] h-full outline-none bg-transparent' type="text" placeholder='Add a task...' />
+                    <input onKeyDown={handleKeyDown} onChange={handleChange} value={todo} className='w-[92%] h-full outline-none bg-transparent' type="text" placeholder='Add a task...' />
                 </div>
-                <button className="addbtn px-5 bg-[#e55c8a] h-full flex justify-center items-center rounded-md hover:bg-[#e7457b] transition-all ease-linear">Save</button>
+                <button onClick={handleSave} className="addbtn px-5 bg-[#e55c8a] h-full flex justify-center items-center rounded-md hover:bg-[#e7457b] transition-all ease-linear">Save</button>
             </div>
 
         </div>
