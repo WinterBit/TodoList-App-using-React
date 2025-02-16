@@ -1,9 +1,9 @@
 import React from 'react'
 
-const addTodo = ({handleChange,handleSave,todo}) => {
+const addTodo = ({handleChange,handleSave,todo, inputRef}) => {
     
     const handleKeyDown = (event) => {
-        if (event.key === "Enter") {
+        if (event.key === "Enter" && todo.length>=1) {
             handleSave()
         }
     }
@@ -24,9 +24,9 @@ const addTodo = ({handleChange,handleSave,todo}) => {
                         <path d="M3 21H11" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
                     </svg>
                     {/* ------ */}
-                    <input onKeyDown={handleKeyDown} onChange={handleChange} value={todo} className='w-[92%] h-full outline-none bg-transparent' type="text" placeholder='Add a task...' />
+                    <input onKeyDown={handleKeyDown} onChange={handleChange} value={todo} ref={inputRef} className='w-[92%] h-full outline-none bg-transparent' type="text" placeholder='Add a task...' />
                 </div>
-                <button onClick={handleSave} className="addbtn px-5 bg-[#e55c8a] h-full flex justify-center items-center rounded-md hover:bg-[#e7457b] transition-all ease-linear">Save</button>
+                <button onClick={handleSave} disabled={todo.length<=1} className="addbtn px-5 bg-[#e55c8a] h-full flex justify-center items-center rounded-md hover:bg-[#e7457b] transition-all ease-linear">Save</button>
             </div>
 
         </div>

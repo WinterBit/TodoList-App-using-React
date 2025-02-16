@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import Dropdown from './dropdown'
 
-const todo = ({task}) => {
+const todo = ({ task, todos, setTodos, setTask, handleFocus }) => {
   const [ischeck, setIscheck] = useState(false)
   const [checkedStyle, setCheckedStyle] = useState({ display: 'block', bgcolor: '#e55c8a', "text-decoration-line": "line-through", color: "#879098" })
   const [notcheckedStyle, setNotcheckedStyle] = useState({ display: 'none', bgcolor: '#484f59', "text-decoration-line": "none", color: "white" })
@@ -12,8 +12,12 @@ const todo = ({task}) => {
     setClicked(!clicked)
   }
 
-  const handleCheck = () => {
+  const handleCheck = (e) => {
+    let id = e.target.id
+    let toDo = todos.find(ID => ID.id === id)
+    toDo.isCompleted = !toDo.isCompleted
     setIscheck(!ischeck)
+    console.log(...todos)
   }
 
   const taskStyle = {
@@ -26,7 +30,7 @@ const todo = ({task}) => {
       <div className="left flex items-center gap-3">
 
         <div className="boxcheck w-[18px] h-[18px] relative">
-          <input onClick={handleCheck} className='w-[18px] h-[18px] opacity-0 absolute z-30' type="checkbox" id='check' />
+          <input onClick={handleCheck} className='w-[18px] h-[18px] opacity-0 absolute z-30' type="checkbox" id={task.id} />
           <span style={{ backgroundColor: ischeck ? checkedStyle.bgcolor : notcheckedStyle.bgcolor }} className='box absolute left-0 bg-[#484f59] border-[1px] border-black w-[18px] h-[18px] rounded-sm z-10'></span>
           <span style={{ display: ischeck ? checkedStyle.display : notcheckedStyle.display }} className="check absolute left-1/2 top-px -translate-x-1/2 w-1/3 h-2/3 border-b-2 border-r-2 rotate-45 z-20"></span>
         </div>
@@ -44,7 +48,7 @@ const todo = ({task}) => {
           </svg>
         </div>
 
-        {clicked && (<Dropdown/>)}
+        {clicked && (<Dropdown sendData={handleClick} todos={todos} task={task} setTodos={setTodos} setTask={setTask} handleFocus={handleFocus} />)}
       </div>
 
     </div>
